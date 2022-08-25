@@ -1,0 +1,55 @@
+<mvc:View
+    controllerName="myns.authors.controller.Object"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+        busy="{objectView>/busy}"
+        busyIndicatorDelay="{objectView>/delay}">
+
+        <semantic:titleHeading>
+            <Title
+                text="{name}"
+                />
+        </semantic:titleHeading>
+        
+        <Page
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+
+            <Table
+                id="table"
+                items="{books}">
+                <columns>
+                    <Column id="idColumn">
+                        <Text text="{i18n>tableIdColumnTitle}" id="idColumnTitle"/>
+                    </Column>
+                    <Column id="titleColumn">
+                        <Text text="{i18n>tableTitleColumnTitle}" id="titleColumnTitle"/>
+                    </Column>
+                    <Column id="stockNumberColumn" hAlign="End">
+                        <Text text="{i18n>tableStockNumberColumnTitle}" id="stockNumberColumnTitle"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier
+                                title="{ID}"/>
+                                <Text
+                                    text="{title}"/>
+                            <ObjectNumber number="{stock}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+    	</Page>
+    </semantic:SemanticPage>
+
+</mvc:View>
